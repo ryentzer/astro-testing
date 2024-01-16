@@ -1,7 +1,5 @@
 ---
-import '../styles/global.css'
-
-const pageTitle = 'About me!';
+import BaseLayout from "../layouts/BaseLayout.astro";
 const identity = {
     firstName: 'Rick',
     lastName: 'Yentzer',
@@ -14,31 +12,15 @@ const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Astro', 'PHP'];
 const hobbyColor = 'salmon';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-		<style define:vars={{hobbyColor}}>
-		    h1 { color: purple; font-size: 3rem; }
-		    .skill {
-		        color: green;
-		    }
-		    .hobby {
-		        background: var(--hobbyColor)
-		    }
-		</style>
-	</head>
-	<body>
-		<h1>Whoami:</h1>
-		<p>My name is {identity.firstName} {identity.lastName}.</p>
-		<p>I live in the {identity.country} and work as a {identity.occupation}.</p>
-		<p>My hobbies include: {identity.hobbies.length >= 2 && <span><em class="hobby">{identity.hobbies[0]}</em> and <em>{identity.hobbies[1]}</em></span>}</p>
-        <p>My skills are:</p>
-        <ul>
-            {skills.map((skill) => <li class="skill">{skill}</li>)}
-        </ul>
-	</body>
-</html>
+<BaseLayout pageTitle="About Astro">
+    <h1>Whoami:</h1>
+    <p>My name is {identity.firstName} {identity.lastName}.</p>
+    <p>I live in the {identity.country} and work as a {identity.occupation}.</p>
+    <p>My hobbies include: {identity.hobbies.length >= 2 &&
+            <span><em class="hobby">{identity.hobbies[0]}</em> and <em>{identity.hobbies[1]}</em></span>}</p>
+    <p>My skills are:</p>
+    <ul>
+        {skills.map((skill) =>
+                <li class="skill">{skill}</li>)}
+    </ul>
+</BaseLayout>

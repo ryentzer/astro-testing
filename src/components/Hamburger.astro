@@ -1,0 +1,48 @@
+---
+
+---
+<div class="hamburger" tabindex="1">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+</div>
+
+<style>
+    .hamburger {
+        display: inline-block;
+        padding: 5px 10px;
+        cursor: pointer;
+        tab-index: 1;
+    }
+
+    .hamburger:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+    }
+
+    .hamburger:focus .line {
+        background-color: white;
+
+    }
+
+    .hamburger .line {
+        display: block;
+        width: 40px;
+        height: 2px;
+        margin-bottom: 10px;
+        position: relative;
+        background: #ff9776;
+        border-radius: 3px;
+        z-index: 1;
+    }
+
+    .hamburger .line:last-child {
+        margin-bottom: 0;
+    }
+
+    @media screen and (min-width: 636px) {
+        .hamburger {
+            display: none;
+        }
+    }
+</style>
