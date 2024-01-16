@@ -1,14 +1,18 @@
 ---
 import '../styles/global.css'
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+const allPosts = await Astro.glob('../pages/posts/*.md')
 ---
 
 <BaseLayout pageTitle="Astro Blog">
     <h2>My Astro Blog</h2>
     <p>This is where I will post about my journey with Astro</p>
-    <ul>
-        <li><a href="/posts/post-1/">Starting Astro</a></li>
-        <li><a href="/posts/post-2/">Post 2</a></li>
-        <li><a href="/posts/post-3/">Post 3</a></li>
-    </ul>
+    <div class="blog-list">
+        {
+            allPosts.map(post =>
+                    <BlogPost title={post.frontmatter.title} url={post.url}
+                              description={post.frontmatter.description}/>)
+        }
+    </div>
 </BaseLayout>
